@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 /**
  * Created by AmberLee on 9/18/2017.
  */
@@ -16,9 +18,9 @@ import java.util.ArrayList;
 public class BulldogArrayAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<Bulldog> mDataSource;
+    private RealmResults<Bulldog> mDataSource;
 
-    public BulldogArrayAdapter(Context context, ArrayList<Bulldog> items){
+    public BulldogArrayAdapter(Context context, RealmResults<Bulldog> items){
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

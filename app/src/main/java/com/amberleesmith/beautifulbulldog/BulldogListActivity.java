@@ -15,33 +15,26 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import io.realm.Realm;
+import io.realm.SyncUser;
+
 /**
  * Created by AmberLee on 9/18/2017.
  */
 
 class BulldogListActivity extends AppCompatActivity{
     private ListView bulldogList;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulldog_list);
 
-        ArrayList<Bulldog> bulldogs = new ArrayList<Bulldog>();
         bulldogList = (ListView) findViewById(R.id.bulldog_list);
+        realm = Realm.getDefaultInstance();
 
-        Bulldog bulldog1 = new Bulldog();
-        bulldog1.setAge("9");
-        bulldog1.setName("Porterhouse");
-
-        Bulldog bulldog2 = new Bulldog();
-        bulldog2.setAge("2");
-        bulldog2.setName("Drake");
-
-        bulldogs.add(bulldog1);
-        bulldogs.add(bulldog2);
-
-        final BulldogArrayAdapter adapter = new BulldogArrayAdapter(this, bulldogs);
+        BulldogArrayAdapter adapter = new BulldogArrayAdapter(this, realm.where(Bulldog.class).findAll());
         bulldogList.setAdapter(adapter);
 
         bulldogList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,5 +46,22 @@ class BulldogListActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        if(SyncUser.currentUser() != null) {
+            SyncUser.currentUser().logout();
+
+            Realm realm = Realm.getDefaultInstance();
+            if(realm != null) {
+                realm.close();
+                Realm.deleteRealm(realm.getConfiguration());
+            }
+        }
+
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+        realm.close();
     }
 }
