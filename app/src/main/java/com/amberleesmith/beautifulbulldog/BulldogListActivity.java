@@ -42,20 +42,10 @@ class BulldogListActivity extends AppCompatActivity{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Bulldog bulldog = (Bulldog) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(view.getContext(), BulldogActivity.class);
-                intent.putExtra("bulldog", (Serializable) bulldog);
+                intent.putExtra("bulldog", bulldog.getId());
                 startActivity(intent);
             }
         });
-
-        if(SyncUser.currentUser() != null) {
-            SyncUser.currentUser().logout();
-
-            Realm realm = Realm.getDefaultInstance();
-            if(realm != null) {
-                realm.close();
-                Realm.deleteRealm(realm.getConfiguration());
-            }
-        }
 
     }
     @Override

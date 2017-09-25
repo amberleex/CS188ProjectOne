@@ -46,9 +46,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         SyncCredentials myCredentials = SyncCredentials.usernamePassword(email, password, false);
+
         SyncUser.loginAsync(myCredentials, "http://52.205.194.154:9080", new SyncUser.Callback() {
             @Override
             public void onSuccess(SyncUser user) {
+
                 SyncConfiguration configuration = new SyncConfiguration.Builder(user, "realm://52.205.194.154:9080/~/bulldog").disableSSLVerification().waitForInitialRemoteData().schemaVersion((long) 12.0).build();
                 Realm.setDefaultConfiguration(configuration);
 
