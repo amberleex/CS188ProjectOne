@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import io.realm.Realm;
 import io.realm.SyncUser;
-
+//fixed
 public class BulldogActivity extends AppCompatActivity {
     private TextView textView;
     private Realm realm;

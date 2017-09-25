@@ -14,6 +14,7 @@ import io.realm.SyncConfiguration;
 import io.realm.SyncCredentials;
 import io.realm.SyncUser;
 
+//fixed
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;

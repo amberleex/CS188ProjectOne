@@ -21,7 +21,7 @@ import io.realm.SyncUser;
 /**
  * Created by AmberLee on 9/18/2017.
  */
-
+//fixed
 class BulldogListActivity extends AppCompatActivity{
     private ListView bulldogList;
     private Realm realm;
