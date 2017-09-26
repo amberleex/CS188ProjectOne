@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
                         realm.close();
-                        Intent intent = new Intent(getBaseContext(), BulldogListActivity.class);
+                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 });
