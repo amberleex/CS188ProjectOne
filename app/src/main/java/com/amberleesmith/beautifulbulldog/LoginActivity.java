@@ -1,6 +1,7 @@
 package com.amberleesmith.beautifulbulldog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -72,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
                         realm.close();
+                        SharedPreferences prefs = getSharedPreferences("MyApp", MODE_PRIVATE);
                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                        intent.putExtra("username", username);
                         startActivity(intent);
                     }
                 });
