@@ -8,7 +8,7 @@ import io.realm.RealmObject;
 /**
  * Created by AmberLee on 9/24/2017.
  */
-
+//fixed
 public class Bulldog extends RealmObject {
     private String id;
     private String name;

@@ -14,6 +14,7 @@ import io.realm.SyncConfiguration;
 import io.realm.SyncCredentials;
 import io.realm.SyncUser;
 
+//fixed
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
@@ -46,10 +47,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         SyncCredentials myCredentials = SyncCredentials.usernamePassword(email, password, false);
+
         SyncUser.loginAsync(myCredentials, "http://52.205.194.154:9080", new SyncUser.Callback() {
             @Override
             public void onSuccess(SyncUser user) {
-                SyncConfiguration configuration = new SyncConfiguration.Builder(user, "realm:/52.205.194.154:9080/~/bulldog").disableSSLVerification().waitForInitialRemoteData().schemaVersion((long) 12.0).build();
+                SyncConfiguration configuration = new SyncConfiguration.Builder(user, "realm://52.205.194.154:9080/~/bulldog").disableSSLVerification().waitForInitialRemoteData().schemaVersion((long) 12.0).build();
                 Realm.setDefaultConfiguration(configuration);
 
                 Realm.getInstanceAsync(configuration, new Realm.Callback() {
@@ -69,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
                         realm.close();
-                        Intent intent = new Intent(getBaseContext(), BulldogListActivity.class);
+                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 });

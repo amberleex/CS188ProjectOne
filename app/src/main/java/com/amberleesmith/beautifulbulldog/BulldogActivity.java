@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import io.realm.Realm;
 import io.realm.SyncUser;
-
+//fixed
 public class BulldogActivity extends AppCompatActivity {
     private TextView textView;
     private Realm realm;
@@ -22,17 +22,6 @@ public class BulldogActivity extends AppCompatActivity {
         String id = (String) getIntent().getStringExtra("bulldog");
         Bulldog bulldog = realm.where(Bulldog.class).equalTo("id", id).findFirst();
         textView.setText(bulldog.getName());
-
-        if(SyncUser.currentUser() != null) {
-            SyncUser.currentUser().logout();
-
-            Realm realm = Realm.getDefaultInstance();
-            if(realm != null) {
-                realm.close();
-                Realm.deleteRealm(realm.getConfiguration());
-            }
-        }
-
     }
 
     @Override
