@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import io.realm.Realm;
 public class BulldogActivity extends AppCompatActivity {
     private TextView nameView;
     private Spinner rating;
-    private ImageView bulldogImage;
+    private ImageButton bulldogImage;
     private Button voteButton;
     private Realm realm;
     public User owner;
@@ -32,7 +33,7 @@ public class BulldogActivity extends AppCompatActivity {
 
         nameView = (TextView) findViewById(R.id.textView);
         rating = (Spinner) findViewById(R.id.spinner);
-        bulldogImage = (ImageView) findViewById(R.id.imageButton);
+        bulldogImage = (ImageButton) findViewById(R.id.imageButton);
         voteButton = (Button) findViewById(R.id.voteButton);
 
         realm = Realm.getDefaultInstance();
