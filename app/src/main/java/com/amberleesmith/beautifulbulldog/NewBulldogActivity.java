@@ -31,7 +31,7 @@ public class NewBulldogActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.nameText);
         age = (EditText) findViewById(R.id.ageText);
         save = (Button) findViewById(R.id.voteButton);
-        bulldogImageButton = (ImageButton) findViewById(R.id.imageButton);
+        bulldogImageButton = (ImageButton) findViewById(R.id.imageButtonhh);
         realm = Realm.getDefaultInstance();
 
 

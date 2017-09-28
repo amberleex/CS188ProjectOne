@@ -21,7 +21,7 @@ import io.realm.Realm;
 public class BulldogActivity extends AppCompatActivity {
     private TextView nameView;
     private Spinner rating;
-    private ImageButton bulldogImage;
+    private ImageView bulldogImage;
     private Button voteButton;
     private Realm realm;
     public User owner;
@@ -33,7 +33,7 @@ public class BulldogActivity extends AppCompatActivity {
 
         nameView = (TextView) findViewById(R.id.textView);
         rating = (Spinner) findViewById(R.id.spinner);
-        bulldogImage = (ImageButton) findViewById(R.id.imageButton);
+        bulldogImage = (ImageView) findViewById(R.id.image);
         voteButton = (Button) findViewById(R.id.voteButton);
 
         realm = Realm.getDefaultInstance();
@@ -47,7 +47,7 @@ public class BulldogActivity extends AppCompatActivity {
         arrayList.add("5");
 
         String id = (String) getIntent().getStringExtra("bulldog");
-        Bulldog bulldog = realm.where(Bulldog.class).equalTo("id", id).findFirst();
+        final Bulldog bulldog = realm.where(Bulldog.class).equalTo("id", id).findFirst();
 
         String username = (String) getIntent().getStringExtra("username");
         owner = realm.where(User.class).equalTo("username", username).findFirst();
@@ -83,6 +83,7 @@ public class BulldogActivity extends AppCompatActivity {
                         Vote vote = new Vote();
                         vote.setOwner(owner);
                         vote.setRating(Integer.valueOf(rating.getSelectedItem().toString()));
+                        bulldog.appendVote(vote);
 
                         finish();
                     }
