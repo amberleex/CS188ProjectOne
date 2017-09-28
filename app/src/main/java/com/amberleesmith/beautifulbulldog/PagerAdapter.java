@@ -4,6 +4,9 @@ package com.amberleesmith.beautifulbulldog; /**
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
@@ -30,4 +33,5 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() { return mNumOfTabs; }
+
 }
